@@ -42,7 +42,21 @@
     </nav>
 
     <div class="container">
-      
+      <ul id="list" class="list-unstyled"></ul>
+      <template id="content-template">
+        <li class="content row">
+          <div class="content-number col-xs-1"></div>
+          <div class="content-votes col-xs-1">
+            <div class="vote-up">UP</div>
+            <div class="votes"></div>
+            <div class="vote-down">DOWN</div>
+          </div>
+          <div class="content-main col-xs-9">
+            <a class="content-link"><h3 class="content-title"></h3></a>
+            <p class="content-meta"></p>
+          </div>
+        </li>
+      </template>
     </div> <!-- /container -->
 
 
@@ -52,5 +66,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/main.js"></script>
   </body>
 </html>

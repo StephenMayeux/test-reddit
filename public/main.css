@@ -2,3 +2,19 @@ body {
   min-height: 2000px;
   padding-top: 70px;
 }
+
+.content {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.content-number {
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+}
