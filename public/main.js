@@ -1,41 +1,37 @@
 $(document).ready(function() {
-  var createdAt = new Date()
-  var dummyData = [
-    {
-      title: 'Funny Video!',
-      link: 'https://www.google.com',
-      votes: 12,
-      user: 'steveman',
-      createdAt: createdAt
-    },
-    {
-      title: 'Sad Video!',
-      link: 'https://www.google.com',
-      votes: 42,
-      user: 'steveboy',
-      createdAt: createdAt
-    },
-    {
-      title: 'Unpopular Video!',
-      link: 'https://www.google.com',
-      votes: -112,
-      user: 'internetman',
-      createdAt: createdAt
-    }
-  ]
+  var config = {
+    apiKey: "AIzaSyBZpqFAnR6ubn4Ig7-Fe6lVXFODGCZE4ZE",
+    authDomain: "reddit-clone-test-fd103.firebaseapp.com",
+    databaseURL: "https://reddit-clone-test-fd103.firebaseio.com",
+    projectId: "reddit-clone-test-fd103",
+    storageBucket: "reddit-clone-test-fd103.appspot.com",
+    messagingSenderId: "939272960776"
+  };
 
-  dummyData.forEach(function(item, index) {
+  firebase.initializeApp(config);
+  var database = firebase.database();
+
+  database.ref('/items').once('value').then(function(snapshot) {
+    var results = snapshot.val();
+    var counter = 1;
+    for (var id in results) {
+      buildItemElement(results[id], counter);
+      counter++;
+    }
+  })
+
+  function buildItemElement(item, index) {
     var $template = $('#content-template').clone()
     var newItem = $template.prop('content')
 
     // Inject data into template elements
-    $(newItem).find('.content-number').text(index + 1)
+    $(newItem).find('.content-number').text(index)
     $(newItem).find('.content-title').text(item.title)
     $(newItem).find('.votes').text(item.votes)
     $(newItem).find('.content-link').attr('href', item.link)
     $(newItem).find('.content-link').attr('target', '_blank')
-    $(newItem).find('.content-meta').text(item.user + ' posted at ' + item.createdAt)
+    $(newItem).find('.content-meta').text(item.user + ' posted ' + moment(item.createdAt).fromNow())
 
     $('#list').append(newItem)
-  });
+  }
 });
