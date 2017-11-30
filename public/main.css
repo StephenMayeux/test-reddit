@@ -11,10 +11,14 @@ body {
   margin-bottom: 10px;
 }
 
-.content-number {
+.content-votes {
   text-align: center;
 }
 
 h3 {
   margin: 0;
+}
+
+.add-post {
+  margin: 7px 0;
 }
