@@ -22,3 +22,11 @@ h3 {
 .add-post {
   margin: 7px 0;
 }
+
+.arrow {
+  cursor: pointer;
+}
+
+.arrow::selection {
+  background-color: inherit;
+}
